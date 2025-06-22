@@ -8,7 +8,7 @@ import {
   getAllArticlesForPathsByLocale,
   getArticleBySlugAndLocale,
 } from '@/lib/contentfulApi';
-import OpenInAppButton from '../../../../../components/OpenInAppButton';
+import OpenInAppButton from '../../../../../../../components/OpenInAppButton';
 
 // === CONFIGURACIÓN ===
 const APP_SCHEME = process.env.NEXT_PUBLIC_APP_SCHEME || 'sori';
@@ -178,7 +178,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   }
 
   const { title, summary, imageUrl } = getArticleData(articleEntry);
-  const appDeepLinkPath = `${WEB_APP_PATH_PREFIX}/article/${articleEntry.sys.id}`;
+  const appDeepLinkPath = `${locale}/${WEB_APP_PATH_PREFIX}/article/${articleEntry.fields.slug}/id/${articleEntry.sys.id}`;
   const appDeepLink = `${APP_SCHEME}://${appDeepLinkPath}`;
 
   return (
@@ -186,7 +186,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       <div style={styles.container}>
         {/* Header con logo/branding */}
         <div style={styles.header}>
-          <div style={styles.appIcon}>📚</div>
           <h2 style={styles.appName}>Aprende con Sori</h2>
         </div>
 
@@ -214,7 +213,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
         {/* CTA Section */}
         <div style={styles.ctaSection}>
-          <div style={styles.ctaIcon}>📱</div>
           <h3 style={styles.ctaTitle}>¡Continúa leyendo en la app!</h3>
           <p style={styles.ctaMessage}>
             Accede al artículo completo y descubre miles de contenidos más en{' '}
@@ -243,22 +241,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               </svg>
               Descargar en Google Play
             </a>
-          </div>
-        </div>
-
-        {/* Features highlight */}
-        <div style={styles.featuresSection}>
-          <div style={styles.feature}>
-            <span style={styles.featureIcon}>🎯</span>
-            <span style={styles.featureText}>Contenido personalizado</span>
-          </div>
-          <div style={styles.feature}>
-            <span style={styles.featureIcon}>📖</span>
-            <span style={styles.featureText}>Miles de artículos</span>
-          </div>
-          <div style={styles.feature}>
-            <span style={styles.featureIcon}>🌟</span>
-            <span style={styles.featureText}>Experiencia premium</span>
           </div>
         </div>
       </div>
