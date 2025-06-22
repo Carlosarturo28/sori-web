@@ -22,7 +22,7 @@ const WEB_DOMAIN =
   process.env.NEXT_PUBLIC_WEB_DOMAIN || 'www.aprendeconsori.com';
 const WEB_APP_PATH_PREFIX = 'app';
 
-export const revalidate = 60 * 10; // 10 minutos
+export const revalidate = 600;
 
 // === TIPOS ===
 interface ArticlePageParams {
