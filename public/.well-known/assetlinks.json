@@ -5,7 +5,8 @@
       "namespace": "android_app",
       "package_name": "com.sori.app",
       "sha256_cert_fingerprints": [
-        "1D:0A:0C:8F:97:8D:7C:0D:A6:0D:DC:F0:D6:0B:AF:63:08:69:0A:0C:85:09:E1:A6:8E:3C:BB:87:F3:64:82:8B"
+        "1D:0A:0C:8F:97:8D:7C:0D:A6:0D:DC:F0:D6:0B:AF:63:08:69:0A:0C:85:09:E1:A6:8E:3C:BB:87:F3:64:82:8B",
+        "E2:66:F4:E3:D5:A8:9F:24:F5:33:37:D0:27:E5:9C:4E:85:4D:DB:7B:37:A7:88:80:53:EF:1F:CE:AF:40:02:55"
       ]
     }
   }
