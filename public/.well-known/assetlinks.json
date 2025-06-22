@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.sori.app",
+      "sha256_cert_fingerprints": [
+        "1D:0A:0C:8F:97:8D:7C:0D:A6:0D:DC:F0:D6:0B:AF:63:08:69:0A:0C:85:09:E1:A6:8E:3C:BB:87:F3:64:82:8B"
+      ]
+    }
+  }
+]
