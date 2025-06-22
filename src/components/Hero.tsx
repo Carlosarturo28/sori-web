@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
 
           {/* Botón de Descarga (CTA) */}
           <a
-            href='https://play.google.com/store/apps/details?id=YOUR_APP_PACKAGE_NAME' // Reemplaza con el enlace real de tu app
+            href='https://play.google.com/store/apps/details?id=com.sori.app'
             target='_blank'
             rel='noopener noreferrer'
           >
