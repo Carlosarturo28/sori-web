@@ -64,6 +64,12 @@ const getArticleData = (articleEntry: ContentfulArticleEntry) => {
   };
 };
 
+const getOptimizedImageUrl = (url: string): string => {
+  if (!url) return '';
+  const baseUrl = url.startsWith('//') ? `https:${url}` : url;
+  return `${baseUrl}?w=800&h=600&fit=fill&fm=jpg&q=80`;
+};
+
 // === METADATA ===
 export async function generateMetadata({
   params,
@@ -95,7 +101,14 @@ export async function generateMetadata({
       url: pageUrl,
       siteName: 'Aprende con Sori',
       images: imageUrl
-        ? [{ url: imageUrl, width: 800, height: 600, alt: title }]
+        ? [
+            {
+              url: getOptimizedImageUrl(imageUrl),
+              width: 800,
+              height: 600,
+              alt: title,
+            },
+          ]
         : [],
       locale: locale === 'es' ? 'es_ES' : 'en_US',
       type: 'article',
@@ -104,7 +117,16 @@ export async function generateMetadata({
       card: imageUrl ? 'summary_large_image' : 'summary',
       title,
       description: summary,
-      images: imageUrl ? [imageUrl] : [],
+      images: imageUrl
+        ? [
+            {
+              url: getOptimizedImageUrl(imageUrl),
+              width: 800,
+              height: 600,
+              alt: title,
+            },
+          ]
+        : [],
     },
   };
 }
@@ -173,7 +195,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           {imageUrl && (
             <div style={styles.imageContainer}>
               <Image
-                src={imageUrl}
+                src={getOptimizedImageUrl(imageUrl)}
                 alt={title}
                 width={700}
                 height={300}

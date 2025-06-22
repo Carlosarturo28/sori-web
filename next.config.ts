@@ -1,10 +1,6 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  i18n: {
-    locales: ['es-CO', 'en-US'],
-    defaultLocale: 'es-CO',
-  },
   images: {
     remotePatterns: [
       {
