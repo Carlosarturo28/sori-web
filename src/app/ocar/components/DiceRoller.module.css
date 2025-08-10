@@ -1,0 +1,157 @@
+.fullscreenCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #161616;
+  z-index: 0;
+}
+
+.controls {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: white;
+  z-index: 10;
+  user-select: none;
+}
+
+.fabContainer {
+  display: flex;
+  gap: 12px;
+}
+
+.fab {
+  background: #444;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.fab:hover {
+  background: #666;
+}
+
+.fabSelected {
+  background: #f7ac3c;
+  color: #022b3a;
+}
+
+.launchButton {
+  background: #207465;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s;
+}
+
+.launchButton:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+.fabWrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.fabMain {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #e75553;
+  color: white;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.fabMain:hover {
+  background-color: #d24344;
+}
+
+.fabOptions {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fabOptions.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.diceButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-right: 12px;
+}
+
+.fabOption {
+  background-color: #207465;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
+  transition: background-color 0.3s ease;
+}
+
+.fabOption:hover {
+  background-color: #186153;
+}
+
+.fabSelected {
+  background-color: #f7ac3c;
+  color: #022b3a;
+}
+
+.rollButton {
+  background-color: #e75553;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 24px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.25);
+  transition: background-color 0.3s ease;
+}
+
+.rollButton:hover:not(:disabled) {
+  background-color: #cc4b49;
+}
+
+.rollButton:disabled {
+  background-color: #a25b58;
+  cursor: default;
+}
