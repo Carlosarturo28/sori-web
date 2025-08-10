@@ -15,7 +15,12 @@
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"10Yellow"
+			"name":"10Yellow",
+			"translation":[
+				0,
+				-3.9691050052642822,
+				0
+			]
 		}
 	],
 	"materials":[
@@ -82,22 +87,22 @@
 		{
 			"mimeType":"image/jpeg",
 			"name":"10 emission",
-			"uri":"textures/10%20emission.jpg"
+			"uri":"10%20emission.jpg"
 		},
 		{
 			"mimeType":"image/png",
 			"name":"d10Normal",
-			"uri":"textures/d10Normal.png"
+			"uri":"d10Normal.png"
 		},
 		{
 			"mimeType":"image/jpeg",
 			"name":"10",
-			"uri":"textures/10.jpg"
+			"uri":"10.jpg"
 		},
 		{
 			"mimeType":"image/png",
 			"name":"roughness",
-			"uri":"textures/roughness.png"
+			"uri":"roughness.png"
 		}
 	],
 	"accessors":[
@@ -107,13 +112,13 @@
 			"count":150,
 			"max":[
 				0.7549314498901367,
-				-3.262251377105713,
-				0.7907072305679321
+				0.7068536281585693,
+				0.7907072901725769
 			],
 			"min":[
 				-0.7549314498901367,
-				-4.675960540771484,
-				-0.7907072305679321
+				-0.7068555355072021,
+				-0.7907071709632874
 			],
 			"type":"VEC3"
 		},

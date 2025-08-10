@@ -10,6 +10,7 @@ import {
 } from '@react-three/cannon';
 import styles from './DiceRoller.module.css';
 import { BufferGeometry, Mesh, Group, Mesh as ThreeMesh } from 'three';
+import Image from 'next/image';
 
 type DiceProps = {
   modelPath: string;
@@ -25,6 +26,7 @@ type ConvexProps = {
 
 const DICE_MODELS = [
   { id: 'd4', label: 'D4', path: '/assets/models/d4/d4.gltf', scale: 1 },
+  { id: 'd6', label: 'D6', path: '/assets/models/d6/d6.gltf', scale: 0.5 },
   { id: 'd8', label: 'D8', path: '/assets/models/d8/d8.gltf', scale: 1 },
   { id: 'd10', label: 'D10', path: '/assets/models/d10/d10.gltf', scale: 1 },
   { id: 'd12', label: 'D12', path: '/assets/models/d12/d12.gltf', scale: 1 },
@@ -285,8 +287,8 @@ function Walls({ width, height }: { width: number; height: number }) {
   const adjustedWidth = width * 0.8; // un poco más estrecho
   const adjustedHeight = height * 0.8;
 
-  const frontWallZ = -adjustedHeight + 14 / 2;
-  const backWallZ = adjustedHeight / 2;
+  const frontWallZ = -adjustedHeight + 18 / 2;
+  const backWallZ = adjustedHeight - 20 / 2;
   const leftWallX = -adjustedWidth / 2;
   const rightWallX = adjustedWidth / 2;
 
@@ -336,12 +338,6 @@ export default function DiceRoller() {
     ? DICE_MODELS.find((d) => d.id === selectedDice)!
     : null;
 
-  function handleRoll() {
-    if (!selectedDice) return;
-    setLaunch(true);
-    setFabOpen(false);
-  }
-
   function handleDiceStop() {
     setLaunch(false);
   }
@@ -377,42 +373,62 @@ export default function DiceRoller() {
       </Canvas>
 
       <div className={styles.fabWrapper}>
+        {/* Main FAB Button with optimized D20 image */}
         <button
-          className={styles.fabMain}
-          aria-label={fabOpen ? 'Cerrar selector' : 'Abrir selector'}
+          className={`${styles.fabMain} ${fabOpen ? styles.fabMainOpen : ''}`}
+          aria-label={fabOpen ? 'Close selector' : 'Open selector'}
           onClick={() => setFabOpen((open) => !open)}
+          aria-expanded={fabOpen}
         >
-          🎲
+          <div
+            className={`${styles.diceIconContainer} ${
+              fabOpen ? styles.rotateIcon : ''
+            }`}
+          >
+            <Image
+              src='/assets/dice/d20.svg'
+              alt='D20'
+              width={32}
+              height={32}
+              className={styles.diceIcon}
+            />
+          </div>
         </button>
 
+        {/* Dice options list */}
         <div
           className={`${styles.fabOptions} ${fabOpen ? styles.open : ''}`}
           aria-hidden={!fabOpen}
         >
           <div className={styles.diceButtons}>
-            {DICE_MODELS.map(({ id, label }) => (
+            {DICE_MODELS.map(({ id, label }, index) => (
               <button
                 key={id}
                 className={`${styles.fabOption} ${
                   id === selectedDice ? styles.fabSelected : ''
                 }`}
-                onClick={() => setSelectedDice(id)}
+                onClick={() => {
+                  setSelectedDice(id);
+                  setLaunch(true); // <-- aquí lanzamos el dado automáticamente
+                  setFabOpen(false); // opcional, para cerrar el menú al elegir dado
+                }}
                 tabIndex={fabOpen ? 0 : -1}
+                style={{
+                  transitionDelay: fabOpen ? `${index * 50}ms` : '0ms',
+                }}
               >
+                <div className={styles.diceTypeIcon}>
+                  <Image
+                    src={`/assets/dice/${id}.svg`}
+                    alt={`D${id}`}
+                    width={20}
+                    height={20}
+                  />
+                </div>
                 {label}
               </button>
             ))}
           </div>
-          {selectedDice && (
-            <button
-              className={styles.rollButton}
-              onClick={handleRoll}
-              disabled={launch}
-              tabIndex={fabOpen ? 0 : -1}
-            >
-              Roll
-            </button>
-          )}
         </div>
       </div>
     </div>

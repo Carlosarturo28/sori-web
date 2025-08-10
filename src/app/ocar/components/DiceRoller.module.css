@@ -48,7 +48,7 @@
 }
 
 .launchButton {
-  background: #207465;
+  background: #c7a568;
   border: none;
   padding: 10px 22px;
   border-radius: 6px;
@@ -66,92 +66,169 @@
 
 .fabWrapper {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 150px;
+  right: 24px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  gap: 16px;
   z-index: 1000;
 }
 
+/* Botón principal */
 .fabMain {
   width: 56px;
   height: 56px;
-  border-radius: 50%;
-  background-color: #e75553;
-  color: white;
-  font-size: 24px;
+  border-radius: 28px;
+  background: #1c1c1e;
   border: none;
+  box-shadow: 0 3px 5px rgba(207, 160, 58, 0.18),
+    0 4px 10px rgba(199, 119, 16, 0.12);
   cursor: pointer;
-  box-shadow: 0 4px 8px rgb(0 0 0 / 0.2);
-  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 .fabMain:hover {
-  background-color: #d24344;
+  background: #1c1c1e;
+  box-shadow: 0 5px 8px rgba(119, 110, 92, 0.18),
+    0 8px 16px rgba(155, 142, 127, 0.12);
 }
 
+.diceIcon {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+}
+
+.rotateIcon {
+  transform: rotate(360deg);
+}
+
+/* Lista de opciones */
 .fabOptions {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 12px;
   opacity: 0;
-  pointer-events: none;
   transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  transition: all 0.3s ease;
 }
 
 .fabOptions.open {
   opacity: 1;
-  pointer-events: auto;
   transform: translateY(0);
+  pointer-events: auto;
 }
 
 .diceButtons {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-right: 12px;
 }
 
+/* Opciones individuales */
 .fabOption {
-  background-color: #207465;
+  padding: 16px;
+  border-radius: 24px;
+  background: #e0b64b;
+  color: #1c1c1e;
   border: none;
-  padding: 8px 12px;
-  border-radius: 20px;
-  color: white;
+  box-shadow: 0 2px 4px rgba(219, 196, 94, 0.2);
   cursor: pointer;
-  font-weight: 600;
-  box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
-  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.2s ease;
+}
+
+.fabOptions.open .fabOption {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .fabOption:hover {
-  background-color: #186153;
+  background: rgb(121, 115, 126);
 }
 
 .fabSelected {
-  background-color: #f7ac3c;
-  color: #022b3a;
+  background: #866c3b;
+  font-weight: bold;
 }
 
+.diceTypeIcon {
+  width: 28px;
+  height: 28px;
+}
+
+/* Botón Roll */
 .rollButton {
-  background-color: #e75553;
-  border: none;
-  padding: 10px 16px;
+  padding: 12px 24px;
   border-radius: 24px;
-  color: white;
-  font-weight: 700;
+  background: #c7a568;
+  color: #000;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  box-shadow: 0 4px 8px rgb(0 0 0 / 0.25);
-  transition: background-color 0.3s ease;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
 }
 
-.rollButton:hover:not(:disabled) {
-  background-color: #cc4b49;
+.rollButton:hover {
+  background: #d8b675;
+  transform: scale(1.05);
 }
 
 .rollButton:disabled {
-  background-color: #a25b58;
-  cursor: default;
+  background: #b19b73;
+  cursor: not-allowed;
+}
+
+.rolling {
+  animation: pulse 1.5s infinite;
+}
+
+.diceIconContainer {
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diceIcon {
+  object-fit: contain;
+}
+
+.diceTypeIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rollButtonIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
